@@ -55,7 +55,7 @@ function _open_cmd(path)
         return `xdg-open $(path)`
     elseif Sys.iswindows()
         cmd_exe = get(ENV, "COMSPEC", "cmd.exe")
-        cmd = `$(cmd_exe) /c start $(path)`
+        cmd = `$(cmd_exe) /c start '$(path)'`
         if length(string(cmd)) > 8191
             # Command too long for CMD.exe; use Powershell instead.
             # (https://learn.microsoft.com/en-us/troubleshoot/windows-client/shell-experience/command-line-string-limitation)
